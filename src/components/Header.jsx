@@ -14,15 +14,16 @@ function Header() {
               </a>
             </li>
             <li>
-              <a href="#services" className="hover:underline">
-                Servicios
-              </a>
-            </li>
-            <li>
               <a href="#values" className="hover:underline">
                 Valores
               </a>
             </li>
+            <li>
+              <a href="#services" className="hover:underline">
+                Servicios
+              </a>
+            </li>
+
             <li>
               <a href="#contact" className="hover:underline">
                 Contacto
