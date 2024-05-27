@@ -12,8 +12,8 @@ import Icono9 from "../assets/icons/icono9.png";
 function Services() {
   return (
     <section id="services" className="py-16 bg-gray-100 px-4">
-      <div className="container mx-auto text-center px-4 md:px-8">
-        <div className="mx-auto max-w-2xl lg:text-center">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="mx-auto max-w-2xl">
           <h2 className="text-base font-semibold leading-7 text-blue-600">
             Conocé nuestros servicios
           </h2>
@@ -25,15 +25,17 @@ function Services() {
             del departamento de Recursos Humanos tanto para empresas familiares
             como para pequeñas y medianas empresas.
           </p>
-        </div>{" "}
+        </div>
         <br />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="service bg-white p-6 shadow-md rounded flex flex-col items-center">
             <div className="icono mb-4">
               <img src={Icono9} className="h-16 w-16" alt="Icono 1" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">Construcción de legajo</h3>
-            <p>
+            <h3 className="text-2xl font-bold mb-4 text-left">
+              Construcción de legajo
+            </h3>
+            <p className="text-left">
               Asesoramiento y control de información para la generación de
               legajo personal y liquidación de haberes.
             </p>
@@ -42,8 +44,10 @@ function Services() {
             <div className="icono mb-4">
               <img src={Icono4} className="h-16 w-16" alt="Icono 2" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">Creación de perfiles</h3>
-            <p>
+            <h3 className="text-2xl font-bold mb-4 text-left">
+              Creación de perfiles
+            </h3>
+            <p className="text-left">
               Armado de perfiles de puestos de cada colaborador, para evaluar la
               idoneidad y detectar futuras necesidades de capacitación.
             </p>
@@ -52,8 +56,10 @@ function Services() {
             <div className="icono mb-4">
               <img src={Icono5} className="h-16 w-16" alt="Icono 1" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">Control de ausentismo</h3>
-            <p>
+            <h3 className="text-2xl font-bold mb-4 text-left">
+              Control de ausentismo
+            </h3>
+            <p className="text-left">
               Si la organización cuenta con ausentismo diario por parte de los
               colaboradores, brindamos control y seguimiento para generar una
               eficiencia óptima en un tema delicado.
@@ -63,8 +69,8 @@ function Services() {
             <div className="icono mb-4">
               <img src={Icono6} className="h-16 w-16" alt="Icono 2" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">Reclutamiento</h3>
-            <p>
+            <h3 className="text-2xl font-bold mb-4 text-left">Reclutamiento</h3>
+            <p className="text-left">
               Reclutamos y seleccionamos personal para puestos vacantes dentro
               de la organización. Encontramos a los mejores candidatos para tus
               necesidades.
@@ -74,10 +80,10 @@ function Services() {
             <div className="icono mb-4">
               <img src={Icono2} className="h-16 w-16" alt="Icono 1" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">
+            <h3 className="text-2xl font-bold mb-4 text-left">
               Confección de manual interno
             </h3>
-            <p>
+            <p className="text-left">
               Elaboración de manual disciplinario para el personal interno de la
               organización.
             </p>
@@ -86,10 +92,10 @@ function Services() {
             <div className="icono mb-4">
               <img src={Icono3} className="h-16 w-16" alt="Icono 2" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">
-              Gestión integral de relaciones laborales
+            <h3 className="text-2xl font-bold mb-4 text-left">
+              Gestión integral relaciones laborales
             </h3>
-            <p>
+            <p className="text-left">
               Presentación de documentación en entidades oficiales. AFIP -
               Ministerio de Trabajo - Obras Sociales y Sindicatos.
             </p>
@@ -98,8 +104,10 @@ function Services() {
             <div className="icono mb-4">
               <img src={Icono7} className="h-16 w-16" alt="Icono 1" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">Desvinculación laboral</h3>
-            <p>
+            <h3 className="text-2xl font-bold mb-4 text-left">
+              Desvinculación laboral
+            </h3>
+            <p className="text-left">
               Programa integral para comunicar de manera oportuna una
               desvinculación laboral.
             </p>
@@ -108,8 +116,10 @@ function Services() {
             <div className="icono mb-4">
               <img src={Icono1} className="h-16 w-16" alt="Icono 2" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">Evaluación de desempeño</h3>
-            <p>
+            <h3 className="text-2xl font-bold mb-4 text-left">
+              Evaluación de desempeño
+            </h3>
+            <p className="text-left">
               Ejecución de evaluación de desempeño basado en la gestión por
               competencias, vinculada a la misión, visión y valores de la
               institución.
@@ -119,10 +129,10 @@ function Services() {
             <div className="icono mb-4">
               <img src={Icono8} className="h-16 w-16" alt="Icono 1" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">
+            <h3 className="text-2xl font-bold mb-4 text-left">
               Políticas de recursos humanos
             </h3>
-            <p>
+            <p className="text-left">
               Creación de políticas que hacen al área de RRHH, con el fin de
               realizar una gestión de manera interna, y transmitir la filosofía
               de la organización a todos los niveles.

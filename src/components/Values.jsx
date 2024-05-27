@@ -2,9 +2,9 @@ import React from "react";
 
 function Values() {
   return (
-    <section id="values" className="py-8 md:py-16 ">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:text-center">
+    <section id="values" className="py-8 md:py-16">
+      <div className="container mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:text-left">
           <h2 className="text-base font-semibold leading-7 text-blue-600">
             Conocé nuestros valores y principios
           </h2>
