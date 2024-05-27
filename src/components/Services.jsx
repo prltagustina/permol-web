@@ -13,9 +13,20 @@ function Services() {
   return (
     <section id="services" className="py-16 bg-gray-100 px-4">
       <div className="container mx-auto text-center px-4 md:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8">
-          Gestión integral de Recursos Humanos
-        </h2>
+        <div className="mx-auto max-w-2xl lg:text-center">
+          <h2 className="text-base font-semibold leading-7 text-blue-600">
+            Conocé nuestros servicios
+          </h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Gestión integral de recursos humanos
+          </p>
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            Desarrollo de manera integral abarcando los distintos subprocesos
+            del departamento de Recursos Humanos tanto para empresas familiares
+            como para pequeñas y medianas empresas.
+          </p>
+        </div>{" "}
+        <br />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="service bg-white p-6 shadow-md rounded flex flex-col items-center">
             <div className="icono mb-4">

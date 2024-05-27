@@ -3,8 +3,19 @@ import React from "react";
 function Values() {
   return (
     <section id="values" className="py-8 md:py-16 ">
-      <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-8">Valores y Principios</h2>
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:text-center">
+          <h2 className="text-base font-semibold leading-7 text-blue-600">
+            Conocé nuestros valores y principios
+          </h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Everything you need to deploy your app
+          </p>
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            Gestión de los recursos humanos para el desarrollo organizacional.
+          </p>
+        </div>
+        <br />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="value bg-white p-6 shadow-md rounded">
             <h3 className="text-2xl font-bold mb-4">Visión</h3>

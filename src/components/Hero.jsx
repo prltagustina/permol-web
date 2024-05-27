@@ -36,11 +36,10 @@ function Hero() {
           />
           <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Bienvenidos a Permol
+              Bienvenidos a PerMol
             </h1>
             <p className="text-lg md:text-xl mb-8">
-              Nos especializamos en encontrar el talento perfecto para tu
-              empresa
+              Nos especializamos en la gestión estratégica de Recusos Humanos
             </p>
             <div className="absolute bottom-24 left-0 right-0 text-center">
               <button className="bg-blue-600 px-4 py-2 md:px-6 md:py-2 lg:px-8 lg:py-3 rounded hover:bg-blue-700">
