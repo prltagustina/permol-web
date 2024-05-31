@@ -86,14 +86,14 @@ function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="service bg-white p-6 shadow-md rounded flex flex-col items-center"
+              className="service bg-white p-6 shadow-md rounded flex flex-col items-start"
             >
               <img
                 src={service.icon}
-                className="h-16 w-16 mx-auto mb-4"
+                className="h-16 w-16 mb-4 mx-auto"
                 alt={`Icono ${index + 1}`}
               />
-              <div className="text-left">
+              <div className="text-left w-full">
                 <h3 className="text-lg font-bold mb-2 text-center">
                   {service.title}
                 </h3>

@@ -31,23 +31,22 @@ function Header() {
         <nav className="hidden md:block">
           <ul className="flex space-x-4">
             <li>
-              <a href="#about" className="hover:underline">
+              <a href="#about" className="btn btn-nav">
                 Sobre Nosotros
               </a>
             </li>
             <li>
-              <a href="#values" className="hover:underline">
+              <a href="#values" className="btn btn-nav">
                 Valores
               </a>
             </li>
             <li>
-              <a href="#services" className="hover:underline">
+              <a href="#services" className="btn btn-nav">
                 Servicios
               </a>
             </li>
-
             <li>
-              <a href="#contact" className="hover:underline">
+              <a href="#contact" className="btn btn-nav">
                 Contacto
               </a>
             </li>

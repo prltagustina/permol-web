@@ -59,7 +59,7 @@ function Hero() {
               “Solo estaremos al nivel que demanda <br />
               un mercado exigente y cambiante, <br />
               si logramos empoderar a nuestro equipo <br /> invitándolos a
-              superarse día a día."
+              superarse día a día.”
             </p>
           </div>
           <div className="absolute bottom-24 left-0 right-0 text-center">
