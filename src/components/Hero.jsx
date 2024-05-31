@@ -34,15 +34,15 @@ function Hero() {
             alt="Slide 1"
             className="object-cover w-full h-full"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center transition-opacity duration-1000">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center px-4 transition-opacity duration-1000">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center">
               Bienvenidos a PerMol
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl mb-8 tracking-wider">
+            <p className="text-lg md:text-xl lg:text-2xl mb-8 tracking-wider text-center">
               Nos especializamos en la gestión estratégica de Recursos Humanos
             </p>
-            <div className="absolute bottom-24 left-0 right-0 text-center">
-              <button className="bg-blue-600 px-4 py-2 md:px-6 md:py-2 lg:px-8 lg:py-3 rounded hover:bg-blue-700">
+            <div className="w-full flex justify-center mt-4">
+              <button className="bg-blue-600 px-6 py-3 text-sm sm:text-base md:text-lg lg:text-xl rounded hover:bg-blue-700">
                 Contactanos
               </button>
             </div>
@@ -61,11 +61,11 @@ function Hero() {
               si logramos empoderar a nuestro equipo <br /> invitándolos a
               superarse día a día.”
             </p>
-          </div>
-          <div className="absolute bottom-24 left-0 right-0 text-center">
-            <button className="bg-blue-600 px-4 py-2 md:px-6 md:py-2 lg:px-8 lg:py-3 rounded hover:bg-blue-700">
-              Contactanos
-            </button>
+            <div className="w-full flex justify-center mt-4">
+              <button className="bg-blue-600 px-6 py-3 text-sm sm:text-base md:text-lg lg:text-xl rounded hover:bg-blue-700">
+                Contactanos
+              </button>
+            </div>
           </div>
         </div>
         <div className="relative h-full transition-opacity duration-1000">
@@ -81,11 +81,11 @@ function Hero() {
               los Recursos Humanos... <br /> <br />
               ¡Trabajemos juntos!
             </p>
-          </div>
-          <div className="absolute bottom-24 left-0 right-0 text-center">
-            <button className="bg-blue-600 px-4 py-2 md:px-6 md:py-2 lg:px-8 lg:py-3 rounded hover:bg-blue-700">
-              Contactanos
-            </button>
+            <div className="w-full flex justify-center mt-4">
+              <button className="bg-blue-600 px-6 py-3 text-sm sm:text-base md:text-lg lg:text-xl rounded hover:bg-blue-700">
+                Contactanos
+              </button>
+            </div>
           </div>
         </div>
       </Carousel>
