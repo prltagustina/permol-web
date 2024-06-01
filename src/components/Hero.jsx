@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 import image1 from "../assets/image1.jpg";
 import image2 from "../assets/image2.jpg";
@@ -13,6 +15,12 @@ function Hero() {
     if (index === total - 1) {
       carouselRef.current && carouselRef.current.next();
     }
+  };
+
+  const handleWhatsAppClick = () => {
+    const phoneNumber = '+5493424085669'; // Número de WhatsApp
+    const message = encodeURIComponent('¡Hola desde Permol! ¿Cómo podemos ayudarte?'); // Mensaje predefinido
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
   return (
@@ -28,12 +36,9 @@ function Hero() {
         className="h-full"
         onChange={handleCarouselChange}
       >
+        {/* Slide 1 */}
         <div className="relative h-full transition-opacity duration-1000">
-          <img
-            src={image1}
-            alt="Slide 1"
-            className="object-cover w-full h-full"
-          />
+          <img src={image1} alt="Slide 1" className="object-cover w-full h-full" />
           <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center px-4 transition-opacity duration-1000">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center">
               Bienvenidos a PerMol
@@ -41,19 +46,12 @@ function Hero() {
             <p className="text-lg md:text-xl lg:text-2xl mb-8 tracking-wider text-center">
               Nos especializamos en la gestión estratégica de Recursos Humanos
             </p>
-            <div className="w-full flex justify-center mt-4">
-              <button className="bg-blue-600 px-6 py-3 text-sm sm:text-base md:text-lg lg:text-xl rounded hover:bg-blue-700">
-                Contactanos
-              </button>
-            </div>
           </div>
         </div>
+
+        {/* Slide 2 */}
         <div className="relative h-full transition-opacity duration-1000">
-          <img
-            src={image2}
-            alt="Slide 2"
-            className="object-cover w-full h-full"
-          />
+          <img src={image2} alt="Slide 2" className="object-cover w-full h-full" />
           <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center px-4 transition-opacity duration-1000">
             <p className="text-lg md:text-xl lg:text-3xl font-bold mb-8 text-center tracking-wider">
               “Solo estaremos al nivel que demanda <br />
@@ -61,19 +59,12 @@ function Hero() {
               si logramos empoderar a nuestro equipo <br /> invitándolos a
               superarse día a día.”
             </p>
-            <div className="w-full flex justify-center mt-4">
-              <button className="bg-blue-600 px-6 py-3 text-sm sm:text-base md:text-lg lg:text-xl rounded hover:bg-blue-700">
-                Contactanos
-              </button>
-            </div>
           </div>
         </div>
+
+        {/* Slide 3 */}
         <div className="relative h-full transition-opacity duration-1000">
-          <img
-            src={image3}
-            alt="Slide 3"
-            className="object-cover w-full h-full"
-          />
+          <img src={image3} alt="Slide 3" className="object-cover w-full h-full" />
           <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center px-4 transition-opacity duration-1000">
             <p className="text-lg md:text-xl lg:text-2xl mb-8 text-center tracking-wider">
               Para tomar las mejores decisiones <br /> y gestionar de forma
@@ -82,8 +73,9 @@ function Hero() {
               ¡Trabajemos juntos!
             </p>
             <div className="w-full flex justify-center mt-4">
-              <button className="bg-blue-600 px-6 py-3 text-sm sm:text-base md:text-lg lg:text-xl rounded hover:bg-blue-700">
-                Contactanos
+              <button className="bg-blue-600 px-6 py-3 text-sm sm:text-base md:text-lg lg:text-xl rounded hover:bg-blue-700" onClick={handleWhatsAppClick}>
+                <FontAwesomeIcon icon={faWhatsapp} className="mr-2" />
+                Contactanos por WhatsApp
               </button>
             </div>
           </div>
