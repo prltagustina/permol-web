@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "./fonts.css";
+
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+/* O en estilos específicos */
+.selector {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-nav {
+  font-size: 16px;
+}
