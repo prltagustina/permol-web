@@ -11,9 +11,7 @@ function About() {
           className="h-48 lg:h-64 w-48 lg:w-64 rounded-full mb-8 lg:mb-0 lg:mr-12"
         />
         <div className="text-left max-w-prose lg:pl-12">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Sobre nosotros
-          </h2>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">Sobre mi</h2>
           <p className="text-base lg:text-lg leading-relaxed mb-4">
             Soy Santiago Peralta, especializado en Consultoría Empresarial
             enfocada en el desarrollo del talento humano.
