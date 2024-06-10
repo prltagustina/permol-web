@@ -22,7 +22,7 @@ function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 bg-blue-600 text-white p-4 z-10 transition-opacity duration-500 ${
+      className={`fixed top-0 left-0 right-0 bg-blue-900 text-white p-4 z-10 transition-opacity duration-500 ease-in-out ${
         isScrolled ? "opacity-0" : "opacity-100"
       }`}
     >

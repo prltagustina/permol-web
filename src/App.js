@@ -6,7 +6,7 @@ import Values from "./components/Values";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import ScrollToTopButton from "./components/ScrollToTopButton"; // Importa el componente ScrollToTopButton
+import ScrollToTopButton from "./components/ScrollToTopButton"; 
 import "./index.css";
 
 function App() {
