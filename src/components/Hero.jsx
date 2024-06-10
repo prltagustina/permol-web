@@ -158,7 +158,6 @@ function Hero() {
                     Para tomar las mejores decisiones <br /> y gestionar de
                     forma correcta <br />
                     los Recursos Humanos... <br /> <br />
-                    ¡Trabajemos juntos!
                   </strong>
                 </motion.p>
                 <motion.div
@@ -168,11 +167,11 @@ function Hero() {
                   className="w-full flex justify-center mt-4"
                 >
                   <button
-                    className="bg-blue-600 px-6 py-3 text-sm sm:text-base md:text-lg lg:text-xl rounded hover:bg-blue-700"
+                    className="bg-blue-600 px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl rounded hover:bg-blue-700"
                     onClick={handleWhatsAppClick}
                   >
                     <FontAwesomeIcon icon={faWhatsapp} className="mr-2" />
-                    Contactanos por WhatsApp
+                    ¡Trabajemos juntos!
                   </button>
                 </motion.div>
               </div>

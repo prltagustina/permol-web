@@ -102,10 +102,10 @@ function Contact() {
           >
             <a
               href={`https://wa.me/${phoneNumber}?text=${message}`}
-              className="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded-md flex items-center justify-center"
+              className="bg-blue-400 hover:bg-blue-500 text-white py-2 px-4 rounded-md flex items-center justify-center"
             >
               <FontAwesomeIcon icon={faWhatsapp} className="mr-2" />
-              ¿Prefieres contactarnos por WhatsApp?
+              Contactanos por WhatsApp
             </a>
           </motion.div>
         </form>
