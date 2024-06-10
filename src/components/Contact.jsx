@@ -6,13 +6,13 @@ import { motion } from "framer-motion";
 const animationProps = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: [0.42, 0, 0.58, 1] },
+  transition: { duration: 0.5, ease: "easeOut" }, // Reducir la duración de la animación
   viewport: { once: true },
 };
 
 const staggeredAnimationProps = (delay) => ({
   ...animationProps,
-  transition: { ...animationProps.transition, delay },
+  transition: { ...animationProps.transition, delay: delay * 0.5 }, // Ajustar el retraso de la animación
 });
 
 function Contact() {

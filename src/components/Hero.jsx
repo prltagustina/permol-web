@@ -31,26 +31,14 @@ function Hero() {
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
   };
 
-  const titleVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 1, delay: 0.5, ease: "easeInOut" },
-    },
-  };
-
   const descriptionVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
-      y: 0,
       opacity: 1,
-      transition: { duration: 1, delay: 0.8, ease: "easeInOut" },
+      y: 0,
+      transition: { duration: 1, ease: "easeInOut" },
     },
-    hover: {
-      scale: 1.1,
-      transition: { duration: 0.3 },
-    },
+    hover: { scale: 1.1, transition: { duration: 0.3 } },
   };
 
   return (
@@ -87,7 +75,7 @@ function Hero() {
               />
               <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center px-4 transition-opacity duration-1000">
                 <motion.h1
-                  variants={titleVariants}
+                  variants={descriptionVariants}
                   initial="hidden"
                   animate={inView ? "visible" : ""}
                   className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center"

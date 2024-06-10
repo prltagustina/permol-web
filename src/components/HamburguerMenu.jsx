@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { FaBars } from "react-icons/fa";
 
-function HamburguerMenu() {
+function HamburguerMenu({ menuColor }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -12,7 +13,7 @@ function HamburguerMenu() {
     <div className="relative">
       <button
         onClick={toggleMenu}
-        className="text-white md:hidden"
+        className={`text-white md:hidden ${menuColor}`} // Usar clase dinámica para el color del menú
         style={{ outline: "none" }}
       >
         <motion.svg
@@ -37,13 +38,16 @@ function HamburguerMenu() {
           className="fixed z-50 top-12 right-0 bg-gray-100 p-4 rounded-lg text-gray-800 shadow-md"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           <button
             onClick={toggleMenu}
             className="absolute top-0 right-0 m-2"
             style={{ outline: "none" }}
-          ></button>
+          >
+            {/* Agregar icono de cierre (X) si lo deseas */}
+          </button>
           <ul className="mr-8">
             <li>
               <a href="#about" className="hover:text-blue-600">
