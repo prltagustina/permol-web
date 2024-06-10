@@ -15,14 +15,14 @@ const footerAnimationProps = {
 };
 
 const iconHoverAnimation = {
-  whileHover: { scale: 1.1, color: "#FFD700" }, // Color amarillo con escala más ligera
+  whileHover: { scale: 1.1, color: "#5472d3" }, // Cambiar el color a un tono azulado
   transition: { duration: 0.2 },
 };
 
 function Footer() {
   return (
     <motion.footer
-      className="bg-blue-900 text-white py-8"
+      className="bg-gray-900 text-white py-8" // Cambiar a un tono de gris oscuro
       {...footerAnimationProps}
     >
       <div className="container mx-auto px-4">
