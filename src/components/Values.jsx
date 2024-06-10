@@ -80,7 +80,7 @@ const Values = () => {
               laborales personalizados y duraderos.
             </p>
           </motion.div>
-          <div className="col-span-2 mt-8">
+          <div className="md:justify-between justify-center md:flex-row flex-col mt-8">
             <h2 className="text-2xl font-semibold text-blue-400 mb-4">
               Valores y Principios
             </h2>
