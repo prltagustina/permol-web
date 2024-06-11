@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaBars } from "react-icons/fa";
 
 function HamburguerMenu({ menuColor }) {
   const [isOpen, setIsOpen] = useState(false);
