@@ -86,7 +86,7 @@ function Hero() {
                   variants={descriptionVariants}
                   initial="hidden"
                   animate={inView ? "visible" : ""}
-                  className="text-lg md:text-xl lg:text-2xl mb-8 tracking-wider text-center"
+                  className="text-lg md:text-xl lg:text-2xl mb-8 text-center"
                 >
                   Nos especializamos en la gestión estratégica de Recursos
                   Humanos
@@ -140,12 +140,12 @@ function Hero() {
                   initial="hidden"
                   whileHover="hover" // Aplicar la variante de hover al hacer hover
                   animate={inView ? "visible" : ""}
-                  className="text-lg md:text-2xl lg:text-3xl font-bold mb-8 text-center tracking-wider" // Ajuste del tamaño de la fuente y negrita
+                  className="text-lg md:text-2xl lg:text-3xl font-bold mb-8 text-center" // Ajuste del tamaño de la fuente y negrita
                 >
                   <strong>
                     Para tomar las mejores decisiones <br /> y gestionar de
                     forma correcta <br />
-                    los Recursos Humanos... <br /> <br />
+                    los Recursos Humanos <br /> <br />
                   </strong>
                 </motion.p>
                 <motion.div
