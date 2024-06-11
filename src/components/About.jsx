@@ -42,7 +42,7 @@ function About() {
           transition={textAnimationProps.transition}
         >
           <motion.h2
-            className="text-3xl lg:text-4xl font-bold mb-4"
+            className="text-3xl lg:text-4xl font-bold mb-4 text-blue-400" // Ajusta el tamaño y color del título
             initial={staggeredTextAnimationProps(0).initial}
             animate={inView ? staggeredTextAnimationProps(0).animate : "hidden"}
             transition={staggeredTextAnimationProps(0).transition}

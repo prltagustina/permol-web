@@ -7,13 +7,6 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 
-const footerAnimationProps = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 1, ease: "easeOut" },
-  viewport: { once: true },
-};
-
 const iconHoverAnimation = {
   whileHover: { scale: 1.1, color: "#5472d3" }, // Cambiar el color a un tono azulado
   transition: { duration: 0.2 },
@@ -21,10 +14,9 @@ const iconHoverAnimation = {
 
 function Footer() {
   return (
-    <motion.footer
-      className="bg-gray-900 text-white py-8" // Cambiar a un tono de gris oscuro
-      {...footerAnimationProps}
-    >
+    <footer className="bg-gray-900 text-white py-8">
+      {" "}
+      {/* Cambiar a un tono de gris oscuro */}
       <div className="container mx-auto px-4">
         <div className="flex justify-center space-x-6 items-center">
           <motion.a href="tel:1234567890" {...iconHoverAnimation}>
@@ -44,7 +36,7 @@ function Footer() {
           <p>© 2024 Consultora Permol. Todos los derechos reservados.</p>
         </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 }
 
