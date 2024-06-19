@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { firestore, serverTimestamp } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
-import Modal from "./Modal";  // Asegúrate de que la ruta sea correcta
+import Modal from "./Modal"; // Asegúrate de que la ruta sea correcta
 
 const animationProps = {
   initial: { opacity: 0, y: 20 },
@@ -22,15 +22,31 @@ function Contact() {
     email: "",
     message: ""
   });
+  const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  const validate = () => {
+    let tempErrors = {};
+    if (!formData.name) tempErrors.name = "El nombre es obligatorio.";
+    if (!formData.email) {
+      tempErrors.email = "El email es obligatorio.";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      tempErrors.email = "El email no es válido.";
+    }
+    if (!formData.message) tempErrors.message = "El mensaje es obligatorio.";
+
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validate()) return;
+
     setSubmitting(true);
 
     try {
-      // Guardar el formulario en Firestore
       await addDoc(collection(firestore, "contactForms"), {
         name: formData.name,
         email: formData.email,
@@ -38,7 +54,6 @@ function Contact() {
         timestamp: serverTimestamp()
       });
 
-      // Limpiar el formulario y mostrar el modal de éxito
       setFormData({ name: "", email: "", message: "" });
       setShowModal(true);
     } catch (error) {
@@ -52,6 +67,10 @@ function Contact() {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
+    });
+    setErrors({
+      ...errors,
+      [e.target.name]: ""
     });
   };
 
@@ -86,9 +105,9 @@ function Contact() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
-                required
+                className={`w-full p-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded focus:outline-none focus:ring-2 focus:ring-blue-600`}
               />
+              {errors.name && <p className="text-red-500 text-left">{errors.name}</p>}
             </motion.div>
             <motion.div {...staggeredAnimationProps(0.6)}>
               <label
@@ -103,9 +122,9 @@ function Contact() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
-                required
+                className={`w-full p-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded focus:outline-none focus:ring-2 focus:ring-blue-600`}
               />
+              {errors.email && <p className="text-red-500 text-left">{errors.email}</p>}
             </motion.div>
             <motion.div {...staggeredAnimationProps(0.8)}>
               <label
@@ -119,10 +138,10 @@ function Contact() {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+                className={`w-full p-2 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded focus:outline-none focus:ring-2 focus:ring-blue-600`}
                 rows="4"
-                required
               ></textarea>
+              {errors.message && <p className="text-red-500 text-left">{errors.message}</p>}
             </motion.div>
             <motion.button
               type="submit"
