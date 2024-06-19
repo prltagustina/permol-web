@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { motion } from "framer-motion";
-import Modal from "./Modal"; // Asegúrate de importar el componente Modal
+import Modal from "./Modal";
 
 const animationProps = {
   initial: { opacity: 0, y: 20 },
