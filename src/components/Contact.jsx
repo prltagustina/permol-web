@@ -1,12 +1,8 @@
-// Contact.jsx
-
 import React, { useState } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { motion } from "framer-motion";
-import Modal from "./Modal";
+import { firestore, serverTimestamp } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
+import Modal from "./Modal";  // Asegúrate de que la ruta sea correcta
 
 const animationProps = {
   initial: { opacity: 0, y: 20 },
@@ -20,36 +16,44 @@ const staggeredAnimationProps = (delay) => ({
   transition: { ...animationProps.transition, delay },
 });
 
-const validationSchema = Yup.object({
-  name: Yup.string().required("El nombre es obligatorio"),
-  email: Yup.string().email("El correo no es válido").required("El correo es obligatorio"),
-  message: Yup.string().required("El mensaje es obligatorio"),
-});
-
 function Contact() {
-  const [isModalVisible, setModalVisible] = useState(false);
-
-  const phoneNumber = "+5493424085669";
-  const message = encodeURIComponent(
-    "¡Hola desde Permol! ¿Cómo podemos ayudarte?"
-  );
-
-  const formik = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      message: '',
-    },
-    validationSchema,
-    onSubmit: (values, { resetForm }) => {
-      // Aquí se manejaría el envío del formulario a Firebase
-      console.log('Formulario enviado:', values);
-
-      // Simulación de envío exitoso
-      resetForm();
-      setModalVisible(true);
-    },
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    try {
+      // Guardar el formulario en Firestore
+      await addDoc(collection(firestore, "contactForms"), {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        timestamp: serverTimestamp()
+      });
+
+      // Limpiar el formulario y mostrar el modal de éxito
+      setFormData({ name: "", email: "", message: "" });
+      setShowModal(true);
+    } catch (error) {
+      console.error("Error al enviar el mensaje:", error);
+    }
+
+    setSubmitting(false);
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   return (
     <motion.section
@@ -68,7 +72,7 @@ function Contact() {
           className="max-w-md mx-auto bg-white p-8 shadow-md rounded-lg"
           style={{ maxWidth: "500px" }}
         >
-          <form onSubmit={formik.handleSubmit} className="flex flex-col space-y-4">
+          <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
             <motion.div {...staggeredAnimationProps(0.4)}>
               <label
                 htmlFor="name"
@@ -80,13 +84,11 @@ function Contact() {
                 type="text"
                 id="name"
                 name="name"
-                value={formik.values.name}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                className={`w-full p-2 border rounded ${formik.touched.name && formik.errors.name ? 'border-red-500' : 'border-gray-300'}`}
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
                 required
               />
-              {formik.touched.name && formik.errors.name && <p className="text-red-500 text-sm">{formik.errors.name}</p>}
             </motion.div>
             <motion.div {...staggeredAnimationProps(0.6)}>
               <label
@@ -99,13 +101,11 @@ function Contact() {
                 type="email"
                 id="email"
                 name="email"
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                className={`w-full p-2 border rounded ${formik.touched.email && formik.errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
                 required
               />
-              {formik.touched.email && formik.errors.email && <p className="text-red-500 text-sm">{formik.errors.email}</p>}
             </motion.div>
             <motion.div {...staggeredAnimationProps(0.8)}>
               <label
@@ -117,40 +117,32 @@ function Contact() {
               <textarea
                 id="message"
                 name="message"
-                value={formik.values.message}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                className={`w-full p-2 border rounded ${formik.touched.message && formik.errors.message ? 'border-red-500' : 'border-gray-300'}`}
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
                 rows="4"
                 required
               ></textarea>
-              {formik.touched.message && formik.errors.message && <p className="text-red-500 text-sm">{formik.errors.message}</p>}
             </motion.div>
             <motion.button
               type="submit"
               className="bg-blue-600 text-white px-8 py-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
               {...staggeredAnimationProps(1)}
+              disabled={submitting}
             >
-              Enviar
+              {submitting ? "Enviando..." : "Enviar"}
             </motion.button>
-            <motion.div
-              className="mt-4 text-center"
-              {...staggeredAnimationProps(1.2)}
-            >
-              <a
-                href={`https://wa.me/${phoneNumber}?text=${message}`}
-                className="bg-blue-400 hover:bg-blue-500 text-white py-2 px-4 rounded-md flex items-center justify-center"
-              >
-                <FontAwesomeIcon icon={faWhatsapp} className="mr-2" />
-                Contactanos por WhatsApp
-              </a>
-            </motion.div>
           </form>
         </div>
       </div>
-      <Modal isVisible={isModalVisible} onClose={() => setModalVisible(false)}>
-        <h2 className="text-2xl font-bold mb-4">¡Formulario enviado con éxito!</h2>
-        <p>Te responderemos a la brevedad.</p>
+
+      <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
+        <h3 className="text-lg leading-6 font-medium text-gray-900">
+          ¡El mensaje se envió con éxito!
+        </h3>
+        <p className="text-sm text-gray-500">
+          Te responderemos a la brevedad.
+        </p>
       </Modal>
     </motion.section>
   );
