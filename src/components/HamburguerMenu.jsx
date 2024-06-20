@@ -12,7 +12,7 @@ function HamburguerMenu({ menuColor }) {
     <div className="relative">
       <button
         onClick={toggleMenu}
-        className={`text-white md:hidden ${menuColor}`} // Usar clase dinámica para el color del menú
+        className={`text-white md:hidden ${menuColor}`} // Clase dinámica para el color del menú
         style={{ outline: "none" }}
       >
         <motion.svg
@@ -22,7 +22,7 @@ function HamburguerMenu({ menuColor }) {
           viewBox="0 0 24 24"
           stroke="currentColor"
           whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileTap={{ scale: 0.9 }} // Efecto de escala cuando se presiona el botón
         >
           <path
             strokeLinecap="round"
@@ -39,6 +39,7 @@ function HamburguerMenu({ menuColor }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
+          style={{ minWidth: "200px" }} // Ajustar el ancho mínimo según sea necesario
         >
           <button
             onClick={toggleMenu}
@@ -47,26 +48,42 @@ function HamburguerMenu({ menuColor }) {
           >
             {/* Agregar icono de cierre (X) si lo deseas */}
           </button>
-          <ul className="mr-8">
+          <ul className="space-y-2"> {/* Espaciado vertical entre elementos */}
             <li>
-              <a href="#about" className="hover:text-blue-600">
+              <motion.a
+                href="#about"
+                className="hover:bg-blue-600 hover:text-white text-lg py-3 px-4 block rounded-md text-center"
+                whileTap={{ scale: 0.95 }} // Efecto de escala cuando se presiona el botón
+              >
                 Sobre Nosotros
-              </a>
+              </motion.a>
             </li>
             <li>
-              <a href="#values" className="hover:text-blue-600">
+              <motion.a
+                href="#values"
+                className="hover:bg-blue-600 hover:text-white text-lg py-3 px-4 block rounded-md text-center"
+                whileTap={{ scale: 0.95 }} // Efecto de escala cuando se presiona el botón
+              >
                 Valores
-              </a>
+              </motion.a>
             </li>
             <li>
-              <a href="#services" className="hover:text-blue-600">
+              <motion.a
+                href="#services"
+                className="hover:bg-blue-600 hover:text-white text-lg py-3 px-4 block rounded-md text-center"
+                whileTap={{ scale: 0.95 }} // Efecto de escala cuando se presiona el botón
+              >
                 Servicios
-              </a>
+              </motion.a>
             </li>
             <li>
-              <a href="#contact" className="hover:text-blue-600">
+              <motion.a
+                href="#contact"
+                className="hover:bg-blue-600 hover:text-white text-lg py-3 px-4 block rounded-md text-center"
+                whileTap={{ scale: 0.95 }} // Efecto de escala cuando se presiona el botón
+              >
                 Contacto
-              </a>
+              </motion.a>
             </li>
           </ul>
         </motion.div>
