@@ -5,7 +5,7 @@ import {
   FaMapMarkerAlt,
   FaLinkedin,
   FaEnvelope,
-  FaCode, // Importa el ícono necesario para "Desarrollado por"
+  FaCode,
 } from "react-icons/fa";
 
 const iconHoverAnimation = {
@@ -53,11 +53,13 @@ function Footer() {
         </div>
         {/* Texto de derechos reservados */}
         <div className="mt-4 text-center">
-          <p>© 2024 Consultora Permol. Todos los derechos reservados.</p>
+          <p>
+            © 2024 Consultora Permol.<br className="sm:hidden" /> Todos los derechos reservados.
+          </p>
         </div>
         {/* Contenedor para "Desarrollado por" */}
         <div className="flex justify-center items-center mt-2">
-          <span className="text-sm mr-1">Desarrollado por</span> {/* Texto "Desarrollado por" */}
+          <span className="text-sm mr-1">Desarrollado por</span>
           <motion.a
             href="https://agustina-peralta.web.app/"
             {...iconHoverAnimation}
@@ -65,7 +67,7 @@ function Footer() {
             rel="noopener noreferrer"
             className="flex items-center"
           >
-            <FaCode size={24} /> {/* Ícono ficticio */}
+            <FaCode size={24} />
           </motion.a>
         </div>
       </div>
