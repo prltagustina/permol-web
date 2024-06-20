@@ -3,8 +3,8 @@ import HamburguerMenu from "./HamburguerMenu";
 
 function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 bg-blue-900 text-white p-4 z-10">
-      <div className="container mx-auto flex justify-between items-center">
+    <header className="fixed top-0 left-0 right-0 bg-blue-900 text-white p-4 z-10 h-16 md:h-20 lg:h-24">
+      <div className="container mx-auto flex justify-between items-center h-full">
         <div className="text-2xl font-bold">Permol</div>
         <nav className="hidden md:block">
           <ul className="flex space-x-4">

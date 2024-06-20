@@ -42,7 +42,10 @@ function Hero() {
   };
 
   return (
-    <section id="hero" className="relative text-white overflow-hidden">
+    <section
+      id="hero"
+      className="relative text-white overflow-hidden pt-16 md:pt-20 lg:pt-24"
+    >
       <div ref={ref}>
         <motion.div
           initial={{ opacity: 0 }}
@@ -78,7 +81,7 @@ function Hero() {
                   variants={descriptionVariants}
                   initial="hidden"
                   animate={inView ? "visible" : ""}
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 text-center"
                 >
                   Bienvenidos a PerMol
                 </motion.h1>
@@ -86,7 +89,7 @@ function Hero() {
                   variants={descriptionVariants}
                   initial="hidden"
                   animate={inView ? "visible" : ""}
-                  className="text-lg md:text-xl lg:text-2xl mb-8 text-center"
+                  className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 text-center"
                 >
                   Nos especializamos en la gestión estratégica de Recursos
                   Humanos
@@ -112,12 +115,12 @@ function Hero() {
                   initial="hidden"
                   whileHover="hover" // Aplicar la variante de hover al hacer hover
                   animate={inView ? "visible" : ""}
-                  className="text-lg md:text-2xl lg:text-3xl font-bold mb-8 text-center tracking-wider" // Ajuste del tamaño de la fuente
+                  className="text-sm sm:text-base md:text-lg lg:text-3xl font-bold mb-8 text-center leading-relaxed tracking-wide" // Ajuste del tamaño de la fuente y estilo
                 >
                   “Solo estaremos al nivel que demanda <br />
                   un mercado exigente y cambiante, <br />
-                  si logramos empoderar a nuestro equipo <br /> invitándolos a
-                  superarse día a día.”
+                  si logramos empoderar a nuestro equipo <br />
+                  invitándolos a superarse día a día.”
                 </motion.p>
               </div>
             </motion.div>
@@ -140,7 +143,7 @@ function Hero() {
                   initial="hidden"
                   whileHover="hover" // Aplicar la variante de hover al hacer hover
                   animate={inView ? "visible" : ""}
-                  className="text-lg md:text-2xl lg:text-3xl font-bold mb-8 text-center" // Ajuste del tamaño de la fuente y negrita
+                  className="text-sm sm:text-base md:text-lg lg:text-3xl font-bold text-center mb-2" // Ajuste del tamaño de la fuente y negrita
                 >
                   <strong>
                     Para tomar las mejores decisiones <br /> y gestionar de
@@ -152,10 +155,10 @@ function Hero() {
                   variants={descriptionVariants}
                   initial="hidden"
                   animate={inView ? "visible" : ""}
-                  className="w-full flex justify-center mt-4"
+                  className="w-full flex justify-center mt-2"
                 >
                   <button
-                    className="bg-blue-600 px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl rounded hover:bg-blue-700"
+                    className="bg-blue-600 px-4 py-2 text-xs sm:text-sm md:text-base lg:text-lg rounded hover:bg-blue-700"
                     onClick={handleWhatsAppClick}
                   >
                     <FontAwesomeIcon icon={faWhatsapp} className="mr-2" />
