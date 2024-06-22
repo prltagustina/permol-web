@@ -55,7 +55,7 @@ function About() {
             animate={inView ? staggeredTextAnimationProps(0.2).animate : "hidden"}
             transition={staggeredTextAnimationProps(0.2).transition}
           >
-            Liderado por especialistas en Gestión de Recursos Humanos
+            Liderado por especialista en Gestión de Recursos Humanos
           </motion.p>
           <motion.p
             className="text-base lg:text-lg leading-relaxed mb-4 mt-4"
