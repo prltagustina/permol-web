@@ -91,7 +91,7 @@ function Hero() {
                   animate={inView ? "visible" : ""}
                   className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 text-center"
                 >
-                  Nos especializamos en la gestión estratégica de Recursos
+                  Nos especializamos en gestión estratégica de Recursos
                   Humanos
                 </motion.p>
               </div>

@@ -48,7 +48,7 @@ function About() {
               animate={inView ? staggeredTextAnimationProps(0).animate : "hidden"}
               transition={staggeredTextAnimationProps(0).transition}
             >
-              Conoce nuestro equipo
+              Soy Santiago Peralta
             </motion.h2>
             <motion.p
               className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
@@ -56,7 +56,7 @@ function About() {
               animate={inView ? staggeredTextAnimationProps(0.2).animate : "hidden"}
               transition={staggeredTextAnimationProps(0.2).transition}
             >
-              Liderado por especialistas en Gestión de Recursos Humanos
+              Especialista en Gestión de Recursos Humanos
             </motion.p>
             <motion.p
               className="text-base lg:text-lg leading-relaxed mb-4 mt-4"
@@ -64,15 +64,7 @@ function About() {
               animate={inView ? staggeredTextAnimationProps(0.4).animate : "hidden"}
               transition={staggeredTextAnimationProps(0.4).transition}
             >
-              Soy Santiago Peralta, especializado en Consultoría Empresarial enfocada en el desarrollo del talento humano.
-            </motion.p>
-            <motion.p
-              className="text-base lg:text-lg leading-relaxed mb-4"
-              initial={staggeredTextAnimationProps(0.6).initial}
-              animate={inView ? staggeredTextAnimationProps(0.6).animate : "hidden"}
-              transition={staggeredTextAnimationProps(0.6).transition}
-            >
-              Con títulos de Técnico Superior en Gestión Empresarial y Técnico Superior en Administración de Personal, estoy próximo a finalizar la Licenciatura en Gestión de Recursos Humanos.
+              Tengo experiencia en diversas áreas clave, como la administración de personal, evaluaciones de rendimiento, elaboración de manuales internos y selección de talento.
             </motion.p>
             <motion.p
               className="text-base lg:text-lg leading-relaxed mb-4"
@@ -80,7 +72,7 @@ function About() {
               animate={inView ? staggeredTextAnimationProps(0.8).animate : "hidden"}
               transition={staggeredTextAnimationProps(0.8).transition}
             >
-              Tengo experiencia en diversas áreas clave, como la administración de personal, evaluaciones de rendimiento, elaboración de manuales internos y selección de talento.
+              
             </motion.p>
             <motion.p
               className="text-base lg:text-lg leading-relaxed"
