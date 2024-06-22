@@ -26,12 +26,12 @@ function About() {
 
   return (
     <section id="about" className="py-16 bg-gray-100 px-4" ref={ref}>
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-center">
+      <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between space-y-8 lg:space-y-0 lg:space-x-12">
           <motion.img
             src={imagenPerfil}
             alt="Imagen de perfil"
-            className="h-48 lg:h-64 w-48 lg:w-64 rounded-full mb-8 lg:mb-0 lg:mr-12"
+            className="h-48 lg:h-64 w-48 lg:w-64 rounded-full"
             initial={imageAnimationProps.initial}
             animate={inView ? imageAnimationProps.animate : "hidden"}
             transition={imageAnimationProps.transition}
