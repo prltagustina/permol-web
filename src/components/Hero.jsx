@@ -109,7 +109,7 @@ function Hero() {
                 alt="Slide 2"
                 className="object-cover w-full h-full"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-15 flex flex-col items-center justify-center px-4 transition-opacity duration-1000">
+              <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col items-center justify-center px-4 transition-opacity duration-1000">
                 <motion.p
                   variants={descriptionVariants}
                   initial="hidden"
