@@ -67,14 +67,6 @@ function About() {
           </motion.p>
           <motion.p
             className="text-base lg:text-lg leading-relaxed mb-4"
-            initial={staggeredTextAnimationProps(0.6).initial}
-            animate={inView ? staggeredTextAnimationProps(0.6).animate : "hidden"}
-            transition={staggeredTextAnimationProps(0.6).transition}
-          >
-            Con títulos de Técnico Superior en Gestión Empresarial y Técnico Superior en Administración de Personal, estoy próximo a finalizar la Licenciatura en Gestión de Recursos Humanos.
-          </motion.p>
-          <motion.p
-            className="text-base lg:text-lg leading-relaxed mb-4"
             initial={staggeredTextAnimationProps(0.8).initial}
             animate={inView ? staggeredTextAnimationProps(0.8).animate : "hidden"}
             transition={staggeredTextAnimationProps(0.8).transition}
