@@ -20,7 +20,7 @@ function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
@@ -51,7 +51,7 @@ function Contact() {
         name: formData.name,
         email: formData.email,
         message: formData.message,
-        timestamp: serverTimestamp()
+        timestamp: serverTimestamp(),
       });
 
       setFormData({ name: "", email: "", message: "" });
@@ -66,11 +66,11 @@ function Contact() {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
     setErrors({
       ...errors,
-      [e.target.name]: ""
+      [e.target.name]: "",
     });
   };
 
@@ -105,9 +105,13 @@ function Contact() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className={`w-full p-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded focus:outline-none focus:ring-2 focus:ring-blue-600`}
+                className={`w-full p-2 border ${
+                  errors.name ? "border-red-500" : "border-gray-300"
+                } rounded focus:outline-none focus:ring-2 focus:ring-blue-600`}
               />
-              {errors.name && <p className="text-red-500 text-left">{errors.name}</p>}
+              {errors.name && (
+                <p className="text-red-500 text-left">{errors.name}</p>
+              )}
             </motion.div>
             <motion.div {...staggeredAnimationProps(0.6)}>
               <label
@@ -122,9 +126,13 @@ function Contact() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full p-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded focus:outline-none focus:ring-2 focus:ring-blue-600`}
+                className={`w-full p-2 border ${
+                  errors.email ? "border-red-500" : "border-gray-300"
+                } rounded focus:outline-none focus:ring-2 focus:ring-blue-600`}
               />
-              {errors.email && <p className="text-red-500 text-left">{errors.email}</p>}
+              {errors.email && (
+                <p className="text-red-500 text-left">{errors.email}</p>
+              )}
             </motion.div>
             <motion.div {...staggeredAnimationProps(0.8)}>
               <label
@@ -138,10 +146,14 @@ function Contact() {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                className={`w-full p-2 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded focus:outline-none focus:ring-2 focus:ring-blue-600`}
+                className={`w-full p-2 border ${
+                  errors.message ? "border-red-500" : "border-gray-300"
+                } rounded focus:outline-none focus:ring-2 focus:ring-blue-600`}
                 rows="4"
               ></textarea>
-              {errors.message && <p className="text-red-500 text-left">{errors.message}</p>}
+              {errors.message && (
+                <p className="text-red-500 text-left">{errors.message}</p>
+              )}
             </motion.div>
             <motion.button
               type="submit"
@@ -159,9 +171,7 @@ function Contact() {
         <h3 className="text-lg leading-6 font-medium text-gray-900">
           ¡El mensaje se envió con éxito!
         </h3>
-        <p className="text-sm text-gray-500">
-          Te responderemos a la brevedad.
-        </p>
+        <p className="text-sm text-gray-500">Te responderemos a la brevedad.</p>
       </Modal>
     </motion.section>
   );

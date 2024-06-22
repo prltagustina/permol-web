@@ -8,7 +8,7 @@ const firebaseConfig = {
   storageBucket: "permol-consultora.appspot.com",
   messagingSenderId: "180003412221",
   appId: "1:180003412221:web:df93ac17fce3ba4eed0694",
-  measurementId: "G-Z4NJ7J1F26"
+  measurementId: "G-Z4NJ7J1F26",
 };
 
 const app = initializeApp(firebaseConfig);
