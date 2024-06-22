@@ -12,7 +12,11 @@ function HamburguerMenu({ menuColor }) {
   useEffect(() => {
     const closeMenu = (event) => {
       // Verificar si se hizo clic fuera del menú hamburguesa
-      if (isOpen && menuRef.current && !menuRef.current.contains(event.target)) {
+      if (
+        isOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target)
+      ) {
         setIsOpen(false);
       }
     };

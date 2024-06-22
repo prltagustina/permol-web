@@ -54,7 +54,8 @@ function Footer() {
         {/* Texto de derechos reservados */}
         <div className="mt-4 text-center">
           <p>
-            © 2024 Consultora Permol.<br className="sm:hidden" /> Todos los derechos reservados.
+            © 2024 Consultora Permol.
+            <br className="sm:hidden" /> Todos los derechos reservados.
           </p>
         </div>
         {/* Contenedor para "Desarrollado por" */}
