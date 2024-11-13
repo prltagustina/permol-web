@@ -49,8 +49,8 @@ const Values = () => {
           <h2 className="text-base font-semibold leading-7 text-blue-400">
             Explora nuestra identidad ética
           </h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Pilares de nuestra cultura organizacional
+          <p className="mt-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl font-rubik">
+            Pilares de Nuestra Cultura Organizacional
           </p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

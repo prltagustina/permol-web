@@ -1,14 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { motion } from "framer-motion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { useInView } from "react-intersection-observer";
-
-import image1 from "../assets/image1.jpg";
-import image2 from "../assets/image2.jpg";
-import image3 from "../assets/image3.jpg";
 
 function Hero() {
   const carouselRef = useRef(null);
@@ -17,18 +11,12 @@ function Hero() {
     threshold: 0.5,
   });
 
-  const handleCarouselChange = (index, total) => {
-    if (index === total - 1) {
-      carouselRef.current && carouselRef.current.next();
-    }
-  };
+  const [showCursor, setShowCursor] = useState(false);
 
-  const handleWhatsAppClick = () => {
-    const phoneNumber = "+5493424085669"; // Número de WhatsApp
-    const message = encodeURIComponent(
-      "¡Hola desde Permol! ¿Cómo podemos ayudarte?"
-    ); // Mensaje predefinido
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+  const handleCarouselChange = (index) => {
+    if (index === 1) {
+      setShowCursor(false);
+    }
   };
 
   const descriptionVariants = {
@@ -41,10 +29,28 @@ function Hero() {
     hover: { scale: 1.1, transition: { duration: 0.3 } },
   };
 
+  const splitText = (text) => {
+    return text.split("").map((char, index) => (
+      <motion.span
+        key={index}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: index * 0.1, duration: 0.1 }}
+        onAnimationComplete={() => {
+          if (index === text.length - 1) {
+            setShowCursor(true);
+          }
+        }}
+      >
+        {char}
+      </motion.span>
+    ));
+  };
+
   return (
     <section
       id="hero"
-      className="relative text-white overflow-hidden pt-16 md:pt-20 lg:pt-24"
+      className="relative text-black overflow-hidden pt-16 md:pt-20 lg:pt-24"
     >
       <div ref={ref}>
         <motion.div
@@ -59,113 +65,62 @@ function Hero() {
             showThumbs={false}
             infiniteLoop={true}
             autoPlay={true}
-            interval={3000} // Intervalo de 3 segundos
+            interval={7000}
             className="h-full"
             onChange={handleCarouselChange}
             disabled={!inView}
           >
-            {/* Slide 1 */}
+            {/* Slide 1 - Fondo #1c2ac4 y texto #e8d5ea */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="relative h-full"
+              transition={{ duration: 0.7 }}
+              className="relative h-full bg-[#1c2ac4]"
+              style={{ height: "80vh" }}
             >
-              <img
-                src={image1}
-                alt="Slide 1"
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center px-4 transition-opacity duration-1000">
+              <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
                 <motion.h1
                   variants={descriptionVariants}
                   initial="hidden"
                   animate={inView ? "visible" : ""}
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 text-center"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 text-center text-[#e8d5ea]"
+                  style={{ fontFamily: "Rubik, sans-serif" }}  // Aplicar Rubik
                 >
-                  Bienvenidos a PerMol
+                  {splitText("Bienvenidos a PerMol")}
+                  {showCursor && (
+                    <motion.span
+                      className="text-[#e8d5ea] animate-pulse"
+                      initial={{ opacity: 1 }}
+                      animate={{ opacity: [1, 0] }}
+                      transition={{ repeat: Infinity, duration: 0.8 }}
+                    >
+                      |
+                    </motion.span>
+                  )}
                 </motion.h1>
-                <motion.p
-                  variants={descriptionVariants}
-                  initial="hidden"
-                  animate={inView ? "visible" : ""}
-                  className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 text-center"
-                >
-                  Nos especializamos en gestión estratégica de Recursos
-                  Humanos
-                </motion.p>
               </div>
             </motion.div>
 
-            {/* Slide 2 */}
+            {/* Slide 2 - Fondo #e8d5ea y texto #1c2ac4 */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="relative h-full"
+              className="relative h-full bg-[#e8d5ea] flex items-center justify-center"
             >
-              <img
-                src={image2}
-                alt="Slide 2"
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-20 flex flex-col items-center justify-center px-4 transition-opacity duration-1000">
-                <motion.p
-                  variants={descriptionVariants}
-                  initial="hidden"
-                  whileHover="hover" // Aplicar la variante de hover al hacer hover
-                  animate={inView ? "visible" : ""}
-                  className="text-sm sm:text-base md:text-lg lg:text-3xl font-bold mb-8 text-center leading-relaxed tracking-wide" // Ajuste del tamaño de la fuente y estilo
-                >
-                  “Solo estaremos al nivel que demanda <br />
-                  un mercado exigente y cambiante, <br />
-                  si logramos empoderar a nuestro equipo <br />
-                  invitándolos a superarse día a día.”
-                </motion.p>
-              </div>
-            </motion.div>
-
-            {/* Slide 3 */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="relative h-full"
-            >
-              <img
-                src={image3}
-                alt="Slide 3"
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-35 flex flex-col items-center justify-center px-4 transition-opacity duration-1000">
-                <motion.p
-                  variants={descriptionVariants}
-                  initial="hidden"
-                  whileHover="hover" // Aplicar la variante de hover al hacer hover
-                  animate={inView ? "visible" : ""}
-                  className="text-sm sm:text-base md:text-lg lg:text-3xl font-bold text-center mb-2" // Ajuste del tamaño de la fuente y negrita
-                >
-                  <strong>
-                    Para tomar las mejores decisiones <br /> y gestionar de
-                    forma correcta <br />
-                    los Recursos Humanos <br /> <br />
-                  </strong>
-                </motion.p>
-                <motion.div
-                  variants={descriptionVariants}
-                  initial="hidden"
-                  animate={inView ? "visible" : ""}
-                  className="w-full flex justify-center mt-2"
-                >
-                  <button
-                    className="bg-blue-600 px-4 py-2 text-xs sm:text-sm md:text-base lg:text-lg rounded hover:bg-blue-700"
-                    onClick={handleWhatsAppClick}
-                  >
-                    <FontAwesomeIcon icon={faWhatsapp} className="mr-2" />
-                    ¡Trabajemos juntos!
-                  </button>
-                </motion.div>
-              </div>
+              <motion.p
+                variants={descriptionVariants}
+                initial="hidden"
+                whileHover="hover"
+                animate={inView ? "visible" : ""}
+                className="text-sm sm:text-base md:text-lg lg:text-3xl font-bold text-center leading-relaxed tracking-wide text-[#1c2ac4]"
+                style={{ fontFamily: "Rubik, sans-serif" }}  // Aplicar Rubik
+              >
+                Estaremos al nivel que demanda <br />
+                un mercado exigente y cambiante, <br />
+                si logramos empoderar a nuestro equipo <br />
+                invitándolos a superarse día a día.
+              </motion.p>
             </motion.div>
           </Carousel>
         </motion.div>

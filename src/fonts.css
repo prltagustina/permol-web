@@ -4,3 +4,32 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Rubik";
+  src: url("./fonts/Rubik-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("./fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Agrega estilos adicionales si necesitas otros pesos */
+@font-face {
+  font-family: "Rubik";
+  src: url("./fonts/Rubik-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("./fonts/NotoSans-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}

@@ -3,11 +3,15 @@ import { motion } from "framer-motion";
 import { firestore, serverTimestamp } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import Modal from "./Modal"; // Asegúrate de que la ruta sea correcta
+import image3 from "../assets/image3.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
+// Ajustar la duración de la transición aquí
 const animationProps = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: [0.42, 0, 0.58, 1] },
+  transition: { duration: 0.4, ease: [0.42, 0, 0.58, 1] }, // Duración más corta
   viewport: { once: true },
 };
 
@@ -74,10 +78,23 @@ function Contact() {
     });
   };
 
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "+5493424085669"; // Número de WhatsApp
+    const message = encodeURIComponent(
+      "¡Hola desde Permol! ¿Cómo podemos ayudarte?"
+    ); // Mensaje predefinido
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+  };
+
   return (
     <motion.section
       id="contact"
-      className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-100"
+      className="py-16 px-4 sm:px-6 lg:px-8 bg-cover bg-center text-white"
+      style={{
+        backgroundImage: `url(${image3})`,
+        backgroundBlendMode: "overlay",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+      }}
       {...animationProps}
     >
       <div className="container mx-auto text-center">
@@ -87,10 +104,7 @@ function Contact() {
         >
           Contacto
         </motion.h2>
-        <div
-          className="max-w-md mx-auto bg-white p-8 shadow-md rounded-lg"
-          style={{ maxWidth: "500px" }}
-        >
+        <div className="max-w-md mx-auto bg-white bg-opacity-80 p-8 shadow-md rounded-lg">
           <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
             <motion.div {...staggeredAnimationProps(0.4)}>
               <label
@@ -164,15 +178,22 @@ function Contact() {
               {submitting ? "Enviando..." : "Enviar"}
             </motion.button>
           </form>
+
+          <motion.div
+            className="mt-8 w-full flex justify-center"
+            {...staggeredAnimationProps(1.2)}
+          >
+            <button
+              className="bg-green-600 px-4 py-2 text-white text-lg rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-600 flex items-center"
+              onClick={handleWhatsAppClick}
+            >
+              <FontAwesomeIcon icon={faWhatsapp} className="mr-2" />
+              ¡Trabajemos juntos!
+            </button>
+          </motion.div>
         </div>
       </div>
-
-      <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
-        <h3 className="text-lg leading-6 font-medium text-gray-900">
-          ¡El mensaje se envió con éxito!
-        </h3>
-        <p className="text-sm text-gray-500">Te responderemos a la brevedad.</p>
-      </Modal>
+      {showModal && <Modal onClose={() => setShowModal(false)} />}
     </motion.section>
   );
 }

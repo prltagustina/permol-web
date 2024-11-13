@@ -1,10 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "./fonts.css";
+@import "./fonts.css"; /* Asegúrate de que Rubik esté importado aquí */
 
 body {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "Noto Sans", sans-serif;
+}
+
+/* Cambiar la tipografía de los h2 a Rubik */
+h2, p {
+  font-family: "Rubik", sans-serif;
 }
 
 /* O en estilos específicos */

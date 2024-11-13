@@ -5,7 +5,6 @@ import {
   FaMapMarkerAlt,
   FaLinkedin,
   FaEnvelope,
-  FaCode,
 } from "react-icons/fa";
 
 const iconHoverAnimation = {
@@ -66,9 +65,9 @@ function Footer() {
             {...iconHoverAnimation}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center"
+            className="text-sm hover:text-[#5472d3]"
           >
-            <FaCode size={24} />
+            Agustina Peralta
           </motion.a>
         </div>
       </div>

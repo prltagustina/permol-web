@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; 
 import { motion } from "framer-motion";
 import Icono1 from "../assets/icons/icono1.png";
 import Icono2 from "../assets/icons/icono2.png";
@@ -70,7 +70,7 @@ const services = [
 const animationProps = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: [0.42, 0, 0.58, 1] },
+  transition: { duration: 1.2, ease: [0.25, 0.8, 0.25, 1] }, // Más suave
   viewport: { once: true },
 };
 
@@ -120,7 +120,7 @@ function Services() {
           <h2 className="text-base font-semibold leading-7 text-blue-400">
             Descubre lo que ofrecemos
           </h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <p className="mt-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl font-rubik">
             Soluciones en Recursos Humanos
           </p>
           <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -128,7 +128,21 @@ function Services() {
             adaptados a empresas de todos los tamaños.
           </p>
         </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2, // Añadir un pequeño retraso entre cada servicio
+              },
+            },
+          }}
+        >
           {services.map((service, index) => (
             <ServiceItem
               key={index}
@@ -138,7 +152,7 @@ function Services() {
               delay={index * 0.1}
             />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
