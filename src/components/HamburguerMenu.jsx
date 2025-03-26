@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 function HamburguerMenu({ menuColor }) {
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef(null); // Referencia al menú hamburguesa
+  const menuRef = useRef(null); // Referencia al contenedor del menú
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -11,7 +11,7 @@ function HamburguerMenu({ menuColor }) {
 
   useEffect(() => {
     const closeMenu = (event) => {
-      // Verificar si se hizo clic fuera del menú hamburguesa
+      // Cierra el menú si se hace clic fuera de él
       if (
         isOpen &&
         menuRef.current &&
@@ -21,25 +21,24 @@ function HamburguerMenu({ menuColor }) {
       }
     };
 
-    // Agregar un event listener para detectar clics en cualquier parte de la página
     document.addEventListener("click", closeMenu);
-
-    // Limpiar el event listener cuando el componente se desmonta o el estado cambia
-    return () => {
-      document.removeEventListener("click", closeMenu);
-    };
-  }, [isOpen]); // Asegurarse de que el efecto se ejecute solo cuando el estado isOpen cambia
+    return () => document.removeEventListener("click", closeMenu);
+  }, [isOpen]);
 
   const handleLinkClick = () => {
-    setIsOpen(false); // Cerrar el menú al hacer clic en cualquier enlace del menú desplegable
+    setIsOpen(false);
   };
 
   return (
     <div className="relative" ref={menuRef}>
       <button
         onClick={toggleMenu}
-        className={`text-white md:hidden ${menuColor}`} // Clase dinámica para el color del menú
+        className={`text-white md:hidden ${menuColor}`}
         style={{ outline: "none" }}
+        aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+        aria-expanded={isOpen}
+        aria-controls="mobile-menu"
+        aria-haspopup="true"
       >
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +47,7 @@ function HamburguerMenu({ menuColor }) {
           viewBox="0 0 24 24"
           stroke="currentColor"
           whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }} // Efecto de escala cuando se presiona el botón
+          whileTap={{ scale: 0.9 }}
         >
           <path
             strokeLinecap="round"
@@ -60,58 +59,69 @@ function HamburguerMenu({ menuColor }) {
       </button>
       {isOpen && (
         <motion.div
+          id="mobile-menu"
+          role="menu"
+          aria-label="Menú de navegación"
           className="fixed z-50 top-12 right-0 bg-gray-100 p-4 rounded-lg text-gray-800 shadow-md"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          style={{ minWidth: "200px" }} // Ajustar el ancho mínimo según sea necesario
+          style={{ minWidth: "200px" }}
         >
           <button
             onClick={toggleMenu}
             className="absolute top-0 right-0 m-2"
             style={{ outline: "none" }}
+            aria-label="Cerrar menú"
           >
-            {/* Agregar icono de cierre (X) si lo deseas */}
+            {/* Puedes agregar un icono de cierre (por ejemplo, una "X") aquí */}
           </button>
-          <ul className="space-y-2">
-            {/* Espaciado vertical entre elementos */}
-            <li>
+          <ul className="space-y-2" role="menu">
+            <li role="none">
               <motion.a
                 href="#about"
                 className="hover:bg-blue-600 hover:text-white text-lg py-3 px-4 block rounded-md text-center"
-                whileTap={{ scale: 0.95 }} // Efecto de escala cuando se presiona el botón
-                onClick={handleLinkClick} // Manejar clic en el enlace para cerrar el menú
+                whileTap={{ scale: 0.95 }}
+                onClick={handleLinkClick}
+                role="menuitem"
+                tabIndex="0"
               >
                 Sobre Nosotros
               </motion.a>
             </li>
-            <li>
+            <li role="none">
               <motion.a
                 href="#values"
                 className="hover:bg-blue-600 hover:text-white text-lg py-3 px-4 block rounded-md text-center"
-                whileTap={{ scale: 0.95 }} // Efecto de escala cuando se presiona el botón
-                onClick={handleLinkClick} // Manejar clic en el enlace para cerrar el menú
+                whileTap={{ scale: 0.95 }}
+                onClick={handleLinkClick}
+                role="menuitem"
+                tabIndex="0"
               >
                 Valores
               </motion.a>
             </li>
-            <li>
+            <li role="none">
               <motion.a
                 href="#services"
                 className="hover:bg-blue-600 hover:text-white text-lg py-3 px-4 block rounded-md text-center"
-                whileTap={{ scale: 0.95 }} // Efecto de escala cuando se presiona el botón
-                onClick={handleLinkClick} // Manejar clic en el enlace para cerrar el menú
+                whileTap={{ scale: 0.95 }}
+                onClick={handleLinkClick}
+                role="menuitem"
+                tabIndex="0"
               >
                 Servicios
               </motion.a>
             </li>
-            <li>
+            <li role="none">
               <motion.a
                 href="#contact"
                 className="hover:bg-blue-600 hover:text-white text-lg py-3 px-4 block rounded-md text-center"
-                whileTap={{ scale: 0.95 }} // Efecto de escala cuando se presiona el botón
-                onClick={handleLinkClick} // Manejar clic en el enlace para cerrar el menú
+                whileTap={{ scale: 0.95 }}
+                onClick={handleLinkClick}
+                role="menuitem"
+                tabIndex="0"
               >
                 Contacto
               </motion.a>

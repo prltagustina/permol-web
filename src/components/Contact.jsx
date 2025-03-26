@@ -4,14 +4,12 @@ import { firestore, serverTimestamp } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import Modal from "./Modal"; // Asegúrate de que la ruta sea correcta
 import image3 from "../assets/image3.jpg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 // Ajustar la duración de la transición aquí
 const animationProps = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.4, ease: [0.42, 0, 0.58, 1] }, // Duración más corta
+  transition: { duration: 0.3, ease: [0.4, 0, 0.5, 1] }, // Duración más corta
   viewport: { once: true },
 };
 
@@ -32,7 +30,7 @@ function Contact() {
 
   const validate = () => {
     let tempErrors = {};
-    if (!formData.name) tempErrors.name = "El nombre es obligatorio.";
+    if (!formData.name) tempErrors.name = "¡Por favor, ingresa tu nombre!";
     if (!formData.email) {
       tempErrors.email = "El email es obligatorio.";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -78,14 +76,6 @@ function Contact() {
     });
   };
 
-  const handleWhatsAppClick = () => {
-    const phoneNumber = "+5493424085669"; // Número de WhatsApp
-    const message = encodeURIComponent(
-      "¡Hola desde Permol! ¿Cómo podemos ayudarte?"
-    ); // Mensaje predefinido
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
-  };
-
   return (
     <motion.section
       id="contact"
@@ -96,16 +86,23 @@ function Contact() {
         backgroundColor: "rgba(0, 0, 0, 0.5)",
       }}
       {...animationProps}
+      aria-labelledby="contact-heading"
     >
       <div className="container mx-auto text-center">
         <motion.h2
-          className="text-3xl font-bold mb-8"
+          id="contact-heading"
+          className="text-3xl font-bold mb-8 text-white"
           {...staggeredAnimationProps(0.2)}
         >
           Contacto
         </motion.h2>
         <div className="max-w-md mx-auto bg-white bg-opacity-80 p-8 shadow-md rounded-lg">
-          <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col space-y-4"
+            aria-label="Formulario de contacto"
+            noValidate
+          >
             <motion.div {...staggeredAnimationProps(0.4)}>
               <label
                 htmlFor="name"
@@ -119,12 +116,24 @@ function Contact() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                autoComplete="name"
+                placeholder="¿Cómo te llamas?"
+                aria-required="true"
+                aria-invalid={errors.name ? "true" : "false"}
+                aria-describedby={errors.name ? "error-name" : undefined}
                 className={`w-full p-2 border ${
-                  errors.name ? "border-red-500" : "border-gray-300"
-                } rounded focus:outline-none focus:ring-2 focus:ring-blue-600`}
+                  errors.name ? "border-[#2A6CCF]" : "border-gray-300"
+                } rounded focus:outline-none focus:ring-2 focus:ring-blue-600 text-black text-sm`}
               />
               {errors.name && (
-                <p className="text-red-500 text-left">{errors.name}</p>
+                <p
+                  id="error-name"
+                  className="text-[#2A6CCF] text-left text-xs"
+                  role="alert"
+                  aria-live="assertive"
+                >
+                  {errors.name}
+                </p>
               )}
             </motion.div>
             <motion.div {...staggeredAnimationProps(0.6)}>
@@ -140,12 +149,24 @@ function Contact() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                autoComplete="email"
+                placeholder="Escribe tu correo"
+                aria-required="true"
+                aria-invalid={errors.email ? "true" : "false"}
+                aria-describedby={errors.email ? "error-email" : undefined}
                 className={`w-full p-2 border ${
-                  errors.email ? "border-red-500" : "border-gray-300"
-                } rounded focus:outline-none focus:ring-2 focus:ring-blue-600`}
+                  errors.email ? "border-[#2A6CCF]" : "border-gray-300"
+                } rounded focus:outline-none focus:ring-2 focus:ring-blue-600 text-black text-sm`}
               />
               {errors.email && (
-                <p className="text-red-500 text-left">{errors.email}</p>
+                <p
+                  id="error-email"
+                  className="text-[#2A6CCF] text-left text-xs"
+                  role="alert"
+                  aria-live="assertive"
+                >
+                  {errors.email}
+                </p>
               )}
             </motion.div>
             <motion.div {...staggeredAnimationProps(0.8)}>
@@ -160,13 +181,25 @@ function Contact() {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
+                autoComplete="off"
+                placeholder="¿En qué podemos ayudarte?"
+                aria-required="true"
+                aria-invalid={errors.message ? "true" : "false"}
+                aria-describedby={errors.message ? "error-message" : undefined}
                 className={`w-full p-2 border ${
-                  errors.message ? "border-red-500" : "border-gray-300"
-                } rounded focus:outline-none focus:ring-2 focus:ring-blue-600`}
+                  errors.message ? "border-[#2A6CCF]" : "border-gray-300"
+                } rounded focus:outline-none focus:ring-2 focus:ring-blue-600 text-black text-sm`}
                 rows="4"
               ></textarea>
               {errors.message && (
-                <p className="text-red-500 text-left">{errors.message}</p>
+                <p
+                  id="error-message"
+                  className="text-[#2A6CCF] text-left text-xs"
+                  role="alert"
+                  aria-live="assertive"
+                >
+                  {errors.message}
+                </p>
               )}
             </motion.div>
             <motion.button
@@ -174,23 +207,12 @@ function Contact() {
               className="bg-blue-600 text-white px-8 py-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
               {...staggeredAnimationProps(1)}
               disabled={submitting}
+              aria-busy={submitting ? "true" : "false"}
+              aria-disabled={submitting ? "true" : "false"}
             >
               {submitting ? "Enviando..." : "Enviar"}
             </motion.button>
           </form>
-
-          <motion.div
-            className="mt-8 w-full flex justify-center"
-            {...staggeredAnimationProps(1.2)}
-          >
-            <button
-              className="bg-green-600 px-4 py-2 text-white text-lg rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-600 flex items-center"
-              onClick={handleWhatsAppClick}
-            >
-              <FontAwesomeIcon icon={faWhatsapp} className="mr-2" />
-              ¡Trabajemos juntos!
-            </button>
-          </motion.div>
         </div>
       </div>
       {showModal && <Modal onClose={() => setShowModal(false)} />}

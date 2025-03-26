@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import { motion } from "framer-motion";
 import Icono1 from "../assets/icons/icono1.png";
 import Icono2 from "../assets/icons/icono2.png";
@@ -6,7 +6,6 @@ import Icono3 from "../assets/icons/icono3.png";
 import Icono4 from "../assets/icons/icono4.png";
 import Icono5 from "../assets/icons/icono5.png";
 import Icono6 from "../assets/icons/icono6.png";
-import Icono7 from "../assets/icons/icono7.png";
 import Icono8 from "../assets/icons/icono8.png";
 import Icono9 from "../assets/icons/icono9.png";
 
@@ -15,7 +14,7 @@ const services = [
     icon: Icono9,
     title: "Gestión de legajos",
     description:
-      "Asesoramiento y control de información para la generación de legajo personal y liquidación de haberes.",
+      "Armado y control de documentación para la generación de legajos personales.",
   },
   {
     icon: Icono4,
@@ -27,50 +26,44 @@ const services = [
     icon: Icono5,
     title: "Control de ausentismo",
     description:
-      "Brindamos control y seguimiento para generar una eficiencia óptima en un tema delicado como el ausentismo diario por parte de los colaboradores.",
+      "Brindamos control y seguimiento para generar una eficiencia óptima en un tema crítico como el ausentismo diario de los colaboradores.",
   },
   {
     icon: Icono6,
     title: "Reclutamiento especializado",
     description:
-      "Reclutamos y seleccionamos personal para puestos vacantes dentro de la organización, encontrando a los mejores candidatos para tus necesidades.",
+      "Reclutamos y seleccionamos personal para puestos vacantes, encontrando a los mejores candidatos para tus necesidades.",
   },
   {
     icon: Icono3,
     title: "Gestión de relaciones laborales",
     description:
-      "Presentación de documentación en entidades oficiales como AFIP, Ministerio de Trabajo, Obras Sociales y Sindicatos.",
-  },
-  {
-    icon: Icono7,
-    title: "Desvinculación laboral asistida",
-    description:
-      "Programa integral para comunicar de manera oportuna una desvinculación laboral.",
+      "Manejo de documentación y resolución de conflictos para una eficiente relación laboral.",
   },
   {
     icon: Icono1,
     title: "Evaluación de desempeño",
     description:
-      "Ejecución de evaluación de desempeño basada en la gestión por competencias, vinculada a la misión, visión y valores de la institución.",
+      "Ejecución de evaluación basada en la gestión por competencias, vinculada a la misión, visión y valores de la institución.",
   },
   {
     icon: Icono8,
     title: "Políticas de RRHH",
     description:
-      "Creación de políticas para el área de RRHH, con el fin de realizar una gestión interna y transmitir la filosofía de la organización a todos los niveles.",
+      "Creación de políticas para el área de RRHH, para una gestión interna efectiva y coherente con la filosofía organizacional.",
   },
   {
     icon: Icono2,
     title: "Manuales internos",
     description:
-      "Elaboración de manuales disciplinarios para el personal interno de la organización.",
+      "Elaboración de manuales disciplinarios para el cliente interno de la organización.",
   },
 ];
 
 const animationProps = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 1.2, ease: [0.25, 0.8, 0.25, 1] }, // Más suave
+  transition: { duration: 1.2, ease: [0.25, 0.8, 0.25, 1] },
   viewport: { once: true },
 };
 
@@ -81,8 +74,15 @@ const ServiceItem = ({ icon, title, description, delay }) => (
     whileInView={animationProps.whileInView}
     transition={{ ...animationProps.transition, delay }}
     viewport={animationProps.viewport}
+    role="listitem"
+    tabIndex="0"
+    aria-label={`${title}: ${description}`}
   >
-    <img src={icon} className="h-16 w-16 mb-4 mx-auto" alt={`Icono ${title}`} />
+    <img
+      src={icon}
+      className="h-16 w-16 mb-4 mx-auto"
+      alt={`Icono de ${title}`}
+    />
     <div className="text-left w-full">
       <motion.h3
         className="text-lg font-bold mb-2 text-center"
@@ -108,7 +108,11 @@ const ServiceItem = ({ icon, title, description, delay }) => (
 
 function Services() {
   return (
-    <section id="services" className="py-16 bg-gray-100 px-4">
+    <section
+      id="services"
+      className="py-16 bg-gray-100 px-4"
+      aria-labelledby="services-heading"
+    >
       <div className="container mx-auto px-4 md:px-8">
         <motion.div
           className="mx-auto max-w-2xl text-left mb-8"
@@ -117,7 +121,10 @@ function Services() {
           transition={animationProps.transition}
           viewport={animationProps.viewport}
         >
-          <h2 className="text-base font-semibold leading-7 text-blue-400">
+          <h2
+            id="services-heading"
+            className="text-base font-semibold leading-7 text-blue-400"
+          >
             Descubre lo que ofrecemos
           </h2>
           <p className="mt-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl font-rubik">
@@ -138,10 +145,12 @@ function Services() {
             visible: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.2, // Añadir un pequeño retraso entre cada servicio
+                staggerChildren: 0.2,
               },
             },
           }}
+          role="list"
+          aria-label="Lista de servicios ofrecidos"
         >
           {services.map((service, index) => (
             <ServiceItem

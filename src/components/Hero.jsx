@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import heroBg from "../assets/images/hero-bg.webp";
 
 function Hero() {
   const carouselRef = useRef(null);
@@ -10,14 +11,6 @@ function Hero() {
     triggerOnce: true,
     threshold: 0.5,
   });
-
-  const [showCursor, setShowCursor] = useState(false);
-
-  const handleCarouselChange = (index) => {
-    if (index === 1) {
-      setShowCursor(false);
-    }
-  };
 
   const descriptionVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -29,28 +22,13 @@ function Hero() {
     hover: { scale: 1.1, transition: { duration: 0.3 } },
   };
 
-  const splitText = (text) => {
-    return text.split("").map((char, index) => (
-      <motion.span
-        key={index}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: index * 0.1, duration: 0.1 }}
-        onAnimationComplete={() => {
-          if (index === text.length - 1) {
-            setShowCursor(true);
-          }
-        }}
-      >
-        {char}
-      </motion.span>
-    ));
-  };
-
   return (
     <section
       id="hero"
-      className="relative text-black overflow-hidden pt-16 md:pt-20 lg:pt-24"
+      role="banner"
+      aria-label="Sección principal de inicio"
+      className="relative text-black overflow-hidden"
+      style={{ touchAction: "auto", overscrollBehavior: "contain" }} // Fix para scroll en Android
     >
       <div ref={ref}>
         <motion.div
@@ -58,71 +36,56 @@ function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <Carousel
-            ref={carouselRef}
-            showArrows={true}
-            showStatus={false}
-            showThumbs={false}
-            infiniteLoop={true}
-            autoPlay={true}
-            interval={7000}
-            className="h-full"
-            onChange={handleCarouselChange}
-            disabled={!inView}
-          >
-            {/* Slide 1 - Fondo #1c2ac4 y texto #e8d5ea */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7 }}
-              className="relative h-full bg-[#1c2ac4]"
-              style={{ height: "80vh" }}
+          <div role="region" aria-label="Galería de imágenes del hero">
+            <Carousel
+              ref={carouselRef}
+              showArrows={true}
+              showStatus={false}
+              showThumbs={false}
+              infiniteLoop={true}
+              autoPlay={true}
+              interval={7000}
+              className="h-full"
+              swipeable={false} // Permite scroll vertical en Android
             >
-              <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-                <motion.h1
+              {/* Slide 1 - Imagen de fondo decorativa */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.7 }}
+                className="relative h-full min-h-screen"
+                style={{
+                  backgroundImage: `url(${heroBg})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundColor: "#1c2ac4", // Color de respaldo mientras carga la imagen
+                }}
+                aria-hidden="true" // Imagen decorativa, se oculta de tecnologías de asistencia
+              ></motion.div>
+
+              {/* Slide 2 - Texto animado */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="relative h-full bg-[#2A6CCF] flex items-center justify-center min-h-screen"
+              >
+                <motion.p
                   variants={descriptionVariants}
                   initial="hidden"
-                  animate={inView ? "visible" : ""}
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 text-center text-[#e8d5ea]"
-                  style={{ fontFamily: "Rubik, sans-serif" }}  // Aplicar Rubik
+                  whileHover="hover"
+                  animate={inView ? "visible" : "hidden"}
+                  className="text-sm sm:text-base md:text-lg lg:text-3xl font-bold text-center leading-relaxed tracking-wide text-[#E3EFFF]"
+                  style={{ fontFamily: "Rubik, sans-serif" }}
                 >
-                  {splitText("Bienvenidos a PerMol")}
-                  {showCursor && (
-                    <motion.span
-                      className="text-[#e8d5ea] animate-pulse"
-                      initial={{ opacity: 1 }}
-                      animate={{ opacity: [1, 0] }}
-                      transition={{ repeat: Infinity, duration: 0.8 }}
-                    >
-                      |
-                    </motion.span>
-                  )}
-                </motion.h1>
-              </div>
-            </motion.div>
-
-            {/* Slide 2 - Fondo #e8d5ea y texto #1c2ac4 */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="relative h-full bg-[#e8d5ea] flex items-center justify-center"
-            >
-              <motion.p
-                variants={descriptionVariants}
-                initial="hidden"
-                whileHover="hover"
-                animate={inView ? "visible" : ""}
-                className="text-sm sm:text-base md:text-lg lg:text-3xl font-bold text-center leading-relaxed tracking-wide text-[#1c2ac4]"
-                style={{ fontFamily: "Rubik, sans-serif" }}  // Aplicar Rubik
-              >
-                Estaremos al nivel que demanda <br />
-                un mercado exigente y cambiante, <br />
-                si logramos empoderar a nuestro equipo <br />
-                invitándolos a superarse día a día.
-              </motion.p>
-            </motion.div>
-          </Carousel>
+                  ESTAREMOS A LA ALTURA DEL MERCADO
+                  <br />
+                  SI EMPODERAMOS A NUESTRO EQUIPO <br />
+                  INVITÁNDOLOS A SUPERARSE DÍA A DÍA.
+                </motion.p>
+              </motion.div>
+            </Carousel>
+          </div>
         </motion.div>
       </div>
     </section>

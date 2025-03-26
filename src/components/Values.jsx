@@ -37,8 +37,20 @@ const Values = () => {
     setExpandedIndex(index === expandedIndex ? null : index);
   };
 
+  // Manejo del teclado para activar el item
+  const handleKeyDown = (e, index) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleItemClick(index);
+    }
+  };
+
   return (
-    <section id="values" className="py-8 md:py-16 bg-gray-100">
+    <section
+      id="values"
+      className="py-8 md:py-16 bg-gray-100"
+      aria-labelledby="values-heading"
+    >
       <div className="container mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
           className="mx-auto max-w-2xl text-left mb-8"
@@ -46,11 +58,14 @@ const Values = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
-          <h2 className="text-base font-semibold leading-7 text-blue-400">
+          <h2
+            id="values-heading"
+            className="text-base font-semibold leading-7 text-blue-400"
+          >
             Explora nuestra identidad ética
           </h2>
           <p className="mt-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl font-rubik">
-            Pilares de Nuestra Cultura Organizacional
+            Cultura Organizacional
           </p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -89,6 +104,11 @@ const Values = () => {
                 key={index}
                 className="value bg-white p-6 shadow-md rounded cursor-pointer"
                 onClick={() => handleItemClick(index)}
+                onKeyDown={(e) => handleKeyDown(e, index)}
+                role="button"
+                tabIndex="0"
+                aria-expanded={expandedIndex === index ? "true" : "false"}
+                aria-controls={`value-desc-${index}`}
                 style={{ marginBottom: "1rem" }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -102,10 +122,12 @@ const Values = () => {
                       transform:
                         expandedIndex === index ? "rotate(180deg)" : "",
                     }}
+                    aria-hidden="true"
                   />
                 </h3>
                 {expandedIndex === index && (
                   <motion.p
+                    id={`value-desc-${index}`}
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
